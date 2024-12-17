@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}
+Project
+{% endblock  %}
+{% block content %}
+<div class="col-md-12">
+    <div class="card">
+        <div class="d-grid gap-2">               
+            <button type="button" class="btn btn-light btn-lg" id="#">{{ view.object.id|yesno:"Edit Project,Add Project" }}</button>
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <form method="post" class="form-group row">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success btn-lg " >Save</button>
+                    <a class="btn btn-danger btn-lg " href="{% url 'projects' %}">Cancel</a> 
+                </form>   
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}
+

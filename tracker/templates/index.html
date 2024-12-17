@@ -1,0 +1,56 @@
+{% extends "layout.html" %} {% block title %} Home {% endblock %} {% block content %}
+<form type="POST">
+  <div class="d-grid gap-2">
+    <select
+      class="form-select form-select-lg mb-3"
+      aria-label=".form-select-lg example"
+      id="project"
+    >
+      
+      {% for project in projects %}
+      <option value="{{ project.pk }}">{{ project.name }}</option>
+      {% endfor %}
+      
+    </select>
+  </div>
+  <div class="col-md-12">
+    
+    <div class="card">
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-light btn-lg" id="#">
+          {{ username }}Time Elapsed <input type="hidden" value={{userid}} id="userID">
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col-4">
+            <h3 id="hours" class="display-4">00</h3>
+            <p>Hours</p>
+          </div>
+          <div class="col-4">
+            <h3 id="minutes" class="display-4">00</h3>
+            <p>Minutes</p>
+          </div>
+          <div class="col-4">
+            <h3 id="seconds" class="display-4">00</h3>
+            <p>Seconds</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button
+          type="button"
+          class="btn btn-success btn-lg active"
+          id="startButton"
+        >
+          Start Shift
+        </button>
+        <button type="button" class="btn btn-danger btn-lg" id="stopButton">
+          End Shift
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

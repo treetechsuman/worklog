@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+Time Entries
+{% endblock  %}
+{% block content %}
+    
+    <div class="col-md-12">
+        <div class="card">
+            <div class="d-grid gap-2">               
+                <button type="button" class="btn btn-light btn-lg" id="#">Time Entries</button>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    {% for time_entry in time_entries %}
+                    <div class="col-8">
+                        <p>{{ time_entry.date }} {{   time_entry.start_time }} to {{ time_entry.end_time }} Duration {{ time_entry.duration }}</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <a type="button" href="{% url 'time-entry-update' time_entry.pk %}" class="btn btn-dark btn" >Update</a>
+                        <a type="button" href="{% url 'time-entry-delete' time_entry.pk %}" class="btn btn-danger btn" >Delete</a>
+                        </div>  
+                    </div> 
+                    {% endfor %}    
+                </div>
+            </div>
+            <div class="d-grid gap-2">     
+                <a type="button" href="{% url 'time-entry-add' %}" class="btn btn-success btn-lg " >Add New</a>    
+            </div>
+        </div>
+    </div>  
+{% endblock  %}

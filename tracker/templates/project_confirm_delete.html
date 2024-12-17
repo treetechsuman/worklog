@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+Delete Project
+{% endblock  %}
+{% block content %}
+<div class="col-md-12">
+    <div class="card">
+        <div class="d-grid gap-2">               
+            <button type="button" class="btn btn-light btn-lg" id="#">Delete Project</button>
+        </div>
+        <div class="card-body">
+            <p>Are you sure you want to delete "{{ object.name }}"?</p>
+            <div class="row text-center">
+                <form method="post" class="form-group row">
+                    {% csrf_token %}
+                     {{ form.as_p }}
+                    <button type="submit" class="btn btn-danger btn-lg " >Confirm</button>
+                 
+                    <a class="btn btn-success btn-lg " href="{% url 'projects' %}">Cancel</a>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}
